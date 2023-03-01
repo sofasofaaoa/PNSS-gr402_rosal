@@ -15,7 +15,9 @@ if($_POST){
 
 ?>
     <form method="post">
-        <label><input type="text"></label>
+        <?php for ($i = 0; $i <= (count($a) - 1); $i++){
+        echo "<label>$a[$i]<input type='checkbox'></label><br>";
+        } ?>
         <br>
         <input type="submit">
     </form>
