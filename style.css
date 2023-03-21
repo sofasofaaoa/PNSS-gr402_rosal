@@ -1,0 +1,34 @@
+body{
+    background-color: rgba(154, 135, 222, 0.66);
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    width: 220px;
+    height: 300px;
+}
+.form > label > input {
+    border: 3px solid rgba(128, 128, 128, 0.632);
+    border-radius: 15px;
+    margin: 10px;
+}
+.form > input{
+    background-color: rgba(128, 128, 128, 0.632);
+    border-radius: 15px;
+    border: none;
+    margin: 10px;
+    height: 30px;
+}
+
+.roww{
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 150px;
+    padding: 40px 80px;
+    border-radius: 25px;
+    border:rgb(124, 108, 185) solid 3px;
+
+}
