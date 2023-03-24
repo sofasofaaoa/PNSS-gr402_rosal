@@ -8,7 +8,7 @@
 </head>
 <body>
     <?php
-    require_once 'bd.php';
+    require_once 'db.php';
     function con($query, $db){
         $res = mysqli_query($db, $query);
         if (!$res) die (mysqli_error($db));

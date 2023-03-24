@@ -1,26 +1,24 @@
 <!DOCTYPE html>
-<?php
-session_start();
-?>
-<html>
+<html lang='en'>
     <head>
+        <meta charset="UTF-8">
         <title>Museum</title>
-        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <?php
+        session_start();
         if (empty($_SESSION['id']))
         {
             echo "Вы вошли на сайт, как гость<br>";
             ?>
             <form action="/auth/testlogin.php" method="post">
                 <p>
-                    <label>Ваша фамилия:<br></label>
-                    <input name="surname" type="text" maxlength="50">
+                    <label>Ваш login:<br></label>
+                    <input name="login" type="text">
                 </p>
                 <p>
                     <label>Ваш пароль:<br></label>
-                    <input name="password" type="password" maxlength="20">
+                    <input name="password" type="password">
                 </p>
                 <p>
                     <input type="submit" name="submit" value="Войти">
@@ -29,25 +27,32 @@ session_start();
             </form>
             <br>
         <?php
-        require_once 'auth/testlogin.php';
         require_once 'db.php';
-            for ($i = 0; $i <= count($errors); $i++){
-                echo "<p>$errors[$i]</p>";
-            }
+        require_once '/auth/testlogin.php';
+        for ($i = 0; $i <= count($errors); $i++){
+            echo "<p>$errors[$i]</p>";
+        }
         }else{
-            echo "Вы вошли на сайт, как ".$_SESSION['name'].$_SESSION['surname']."";
+            echo "Вы вошли на сайт, как ".$_SESSION['login']."";
             ?> 
             <br>
             <a href='auth/logout.php'>Выйти</a> 
             <br>
             <a href='add.php'>ADD</a><br><?php
-
+            if (!empty($_GET['del']) && !empty((int)$_GET['id'])) {
+                $id = (int)$_GET['id'];
+                $query = "DELETE FROM exhibits WHERE id=$id";
+                $res = con($query, $db);
+                if (mysqli_affected_rows($db) == 1) {
+                    echo "<h2>Экспонат удален</h2>";
+                }
+            }
             function con($query, $db){
                 $res = mysqli_query($db, $query);
                 if (!$res) die (mysqli_error($db));
                 return $res;
             }
-            $query = 'SELECT * FROM classics';
+            $query = "SELECT * FROM exhibits";
             $res = con($query, $db);
             while ($row = mysqli_fetch_assoc($res)) {
             ?>
@@ -66,14 +71,7 @@ session_start();
         ?>
         <?php
         
-        if (!empty($_GET['del']) && !empty((int)$_GET['id'])) {
-            $id = (int)$_GET['id'];
-            $query = "DELETE FROM exhibits WHERE id=$id";
-            $res = con($query, $db);
-            if (mysqli_affected_rows($db) == 1) {
-                echo "<h2>Экспонат удален</h2>";
-            }
-        }
+        
         ?>
     </body>
 </html>
