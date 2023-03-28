@@ -1,0 +1,21 @@
+{
+    "name": "sofasofaaoa/pnss-gr402_rosal",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sofasofaaoa",
+            "email": "ladyrobertus3@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4 | ^8.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Src\\": "core/src/",
+            "": "app/"
+        }
+    }
+}
