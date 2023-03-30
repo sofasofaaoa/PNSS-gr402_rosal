@@ -10,9 +10,13 @@
     ],
     "minimum-stability": "dev",
     "require": {
+<<<<<<< HEAD
         "php": "^7.4 | ^8.0",
         "illuminate/database": "^11.0@dev",
         "illuminate/events": "^11.0@dev"
+=======
+        "php": "^7.4 | ^8.0"
+>>>>>>> origin/master
     },
     "autoload": {
         "psr-4": {
