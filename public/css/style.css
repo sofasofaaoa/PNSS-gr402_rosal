@@ -1,0 +1,20 @@
+form {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    text-align: right
+}
+form > label > input {
+    border: none;
+    height: 40px;
+    margin: 10px;
+}
+body {
+    background-color: #e6f7ff;
+}
+button {
+    width: 200px;
+    border: none;
+    height: 40px;
+    background-color: #96dafa;
+}
