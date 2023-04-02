@@ -12,7 +12,6 @@ class Reception extends Model implements IdentityInterface
 
     public $timestamps = false;
     protected $fillable = [
-        'reception_id',
         'patient_id',
         'id',
         'cabinet_id',
@@ -20,15 +19,6 @@ class Reception extends Model implements IdentityInterface
         'time',
         'diagnosis_id'
     ];
-
-    protected static function booted()
-    {
-        static::created(function ($user) {
-            $user->password = md5($user->password);
-            $user->save();
-        });
-    }
-
     //Выборка пользователя по первичному ключу
     public function findIdentity(int $id)
     {

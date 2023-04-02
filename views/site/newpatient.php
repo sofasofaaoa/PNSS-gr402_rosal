@@ -1,6 +1,7 @@
 <div class="h1">
     <h1>ДОБАВЛЕНИЕ ПАЦИЕНТА</h1>
 </div>
+<h3><?= $message ?? ''; ?></h3>
 <form method="post">
     <div class="form_col">
         <label>Фамилия <br><input type="text" name="surname"></label>

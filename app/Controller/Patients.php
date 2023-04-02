@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Model\Patient;
 use Src\View;
 use Src\Request;
 use Model\User;
@@ -19,8 +20,8 @@ class Patients
 
     public function newpatient(Request $request): string
     {
-        if ($request->method === 'POST' && User::create($request->all())) {
-            return new View('site.newpatient', ['message' => 'Пользователь успешно зарегистрирован']);
+        if ($request->method === 'POST' && Patient::create($request->all())) {
+            return new View('site.newpatient', ['message' => 'Пациент успешно зарегистрирован']);
         }
         return new View('site.newpatient');
     }

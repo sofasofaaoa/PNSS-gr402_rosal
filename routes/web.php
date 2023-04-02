@@ -26,5 +26,5 @@ Route::add('GET', '/patient', [Controller\Patients::class, 'patient'])
     ->middleware('doc');
 Route::add(['GET', 'POST'], '/newpatient', [Controller\Patients::class, 'newpatient'])
     ->middleware('reg');
-Route::add(['GET', 'POST'], '/newreception', [Controller\Reception::class, 'signup'])
+Route::add(['GET', 'POST'], '/newreception', [Controller\Reception::class, 'new'])
     ->middleware('reg');
