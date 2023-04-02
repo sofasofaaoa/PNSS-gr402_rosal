@@ -15,20 +15,23 @@
         if (app()->auth::check()):
             if (app()->auth::user()->job_title_id <= 3){
                 ?>
-                <a href='<?= app()->route->getUrl('/hello') ?>'>Записи</a>
-                <a href='<?= app()->route->getUrl('/hello') ?>'>Пациенты</a>
+                <a href='<?= app()->route->getUrl('/receptions') ?>'>Записи</a>
+                <a href='<?= app()->route->getUrl('/patients') ?>'>Пациенты</a>
                 <?php } //https://laravel.com/docs/10.x/eloquent-relationships
                 if (app()->auth::user()->job_title_id <= 2) {?>
-                    <a href='<?= app()->route->getUrl('/hello') ?>'>Диагнозы</a>
+                    <a href='<?= app()->route->getUrl('/diagnosis') ?>'>Диагнозы</a>
                     <?php if (app()->auth::user()->job_title_id === 1){ ?>
-                            <a href='<?= app()->route->getUrl('/hello') ?>'>Кабинеты</a>
-                            <a href='<?= app()->route->getUrl('/hello') ?>'>Сотрудники</a>
+                            <a href='<?= app()->route->getUrl('/cabinets') ?>'>Кабинеты</a>
+                            <a href='<?= app()->route->getUrl('/employees') ?>'>Сотрудники</a>
                     <?php }
 
             } ?>
-        <a href="<?= app()->route->getUrl('/logout') ?>">Выход (<?= app()->auth::user()->name ?>)</a>
-        <?php endif; ?>
     </nav>
+    <div class="logout">
+        <p><?= app()->auth::user()->name ?></p>
+        <button><a href="<?= app()->route->getUrl('/logout') ?>">ВЫХОД</a></button>
+    </div>
+    <?php endif; ?>
 </header>
 <main>
     <?= $content ?? '' ?>

@@ -88,6 +88,7 @@ class Route
         $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
         switch ($routeInfo[0]) {
             case Dispatcher::NOT_FOUND:
+                $this->redirect('/hello');
                 throw new Error('NOT_FOUND');
             case Dispatcher::METHOD_NOT_ALLOWED:
                 throw new Error('METHOD_NOT_ALLOWED');

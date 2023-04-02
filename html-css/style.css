@@ -1,5 +1,5 @@
 body {
-    font-family: Arial, serif;
+    font-family: Arial;
     margin: 0;
     background-color: #e6f7ff;
 }
@@ -33,9 +33,6 @@ nav {
 }
 h1 {
     margin-right: 50px;
-}
-h3{
-    margin: 0 0 40px 170px;
 }
 .new{
     display: flex;
@@ -122,7 +119,7 @@ table td {
 }
 
 table td:last-child{
-    width: 0;
+    width: 0px;
     height: 25px;
     text-align: center;
 }

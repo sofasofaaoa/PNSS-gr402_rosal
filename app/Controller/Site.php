@@ -10,15 +10,16 @@ use Src\Auth\Auth;
 
 class Site
 {
+
     public function hello(): string
     {
-        return new View('site.hello', ['message' => 'hello working']);
+        return new View('site.hello');
     }
 
     public function signup(Request $request): string
     {
         if ($request->method === 'POST' && User::create($request->all())) {
-            app()->route->redirect('/hello');
+            return new View('site.signup', ['message' => 'Пользователь успешно зарегистрирован']);
         }
         return new View('site.signup');
     }

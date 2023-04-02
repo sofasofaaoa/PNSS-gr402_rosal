@@ -6,21 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Src\Auth\IdentityInterface;
 
-class User extends Model implements IdentityInterface
+class Job_title extends Model implements IdentityInterface
 {
     use HasFactory;
 
     public $timestamps = false;
     protected $fillable = [
-        'login',
-        'password',
-        'name',
-        'surname',
-        'patronymic',
-        'sex',
-        'date_of_birth',
-        'job_title_id',
-        'specialization'
+        'title'
     ];
 
     protected static function booted()
@@ -48,20 +40,5 @@ class User extends Model implements IdentityInterface
     {
         return self::where(['login' => $credentials['login'],
             'password' => md5($credentials['password'])])->first();
-    }
-    public function is_admin(): bool
-    {
-        if(app()->auth::user()->job_title_id === 1){return true;}
-        else {return false;}
-    }
-    public function is_doctor(): bool
-    {
-        if(app()->auth::user()->job_title_id === 2){return true;}
-        else {return false;}
-    }
-    public function is_reg(): bool
-    {
-        if(app()->auth::user()->job_title_id === 3){return true;}
-        else {return false;}
     }
 }
