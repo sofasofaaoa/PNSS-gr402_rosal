@@ -22,8 +22,7 @@ Route::add(['GET', 'POST'], '/diagnosis', [Controller\Diagnosis::class, 'diagnos
     ->middleware('doc');
 Route::add('GET', '/newdiag', [Controller\Diagnosis::class, 'new'])
     ->middleware('admin');
-Route::add('GET', '/patient', [Controller\Patients::class, 'patient'])
-    ->middleware('doc');
+Route::add('GET', '/patient/(?P<id>\d+)', [Controller\Patients::class, 'patient']);
 Route::add(['GET', 'POST'], '/newpatient', [Controller\Patients::class, 'newpatient'])
     ->middleware('reg');
 Route::add(['GET', 'POST'], '/newreception', [Controller\Reception::class, 'new'])

@@ -9,6 +9,7 @@
             <th>Имя</th>
             <th>Отчество</th>
             <th>Дата рождения</th>
+            <th>Подробнее</th>
         </tr>
         </thead>
         <tbody>
@@ -19,7 +20,7 @@
                 .'<td>' . $patient->name .'</td>'
                 .'<td>' . $patient->patronymic . '</td>'
                 .'<td>' . $patient->date_of_birth . '</td>'
-                . '<td><a href="'. app()->route->getUrl('/deluser') .'">X</a></td>'
+                . '<td><a href="' . app()->route->getUrl('/patient/'. $patient->patient_id) . '">Подробнее</a></td>'
                 .'</tr>';
         }
         ?>
