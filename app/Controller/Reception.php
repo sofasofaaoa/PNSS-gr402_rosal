@@ -35,4 +35,31 @@ class Reception
                 'cabinets' => $cabinets,
                 'diagnosis' => $diagnosis]);
     }
+
+    public static function reception(Request $request): string
+    {
+
+        $diagnosis = Diagnosis::all();
+        $reception = \Model\Reception::where('reception_id', $request->reception_id)->first();
+        $patients = Patient::where('patient_id', $reception->patient_id)->first();
+        $users = User::where('id', $reception->id)->first();
+        $d = Diagnosis::where('diagnosis_id', $reception->diagnosis_id)->first();
+        if ($request->method === 'POST' && $reception->where('reception_id', $request->reception_id)->update(['diagnosis_id' => $request->diagnosis_id])) {
+
+            return new View('site.reception', ['message' => 'Запись на приём изменена',
+                'reception' => $reception,
+                'patients' => $patients,
+                'diagnosis' => $diagnosis,
+                'd' => $d,
+                'users' => $users,]);
+
+        }
+        return (new View())->render('site.reception', [
+            'reception' => $reception,
+            'patients' => $patients,
+            'diagnosis' => $diagnosis,
+            'users' => $users,
+            'd' => $d,
+        ]);
+    }
 }

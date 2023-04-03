@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 02 2023 г., 18:13
+-- Время создания: Апр 03 2023 г., 18:20
 -- Версия сервера: 10.4.27-MariaDB
 -- Версия PHP: 8.2.0
 
@@ -62,11 +62,15 @@ CREATE TABLE `diagnoses` (
 
 INSERT INTO `diagnoses` (`diagnosis_id`, `title`) VALUES
 (1, 'Ангина'),
-(2, 'Опухоль'),
+(10, 'Диарея'),
 (3, 'Невроз'),
+(2, 'Опухоль'),
 (4, 'Поликистоз'),
 (5, 'Пульпит'),
-(6, 'Трахеит');
+(6, 'Трахеит'),
+(11, 'Что-то'),
+(12, 'Что=тотам'),
+(7, 'Язва');
 
 -- --------------------------------------------------------
 
@@ -137,8 +141,8 @@ CREATE TABLE `receptions` (
 INSERT INTO `receptions` (`reception_id`, `patient_id`, `id`, `cabinet_id`, `date`, `time`, `diagnosis_id`) VALUES
 (2, 1, 9, 10, '2023-04-03', '15:30:00', 1),
 (3, 1, 8, 12, '2023-04-03', '15:30:00', 1),
-(6, 2, 9, 12, '2023-04-02', '00:00:00', 5),
-(7, 2, 9, 12, '2023-04-20', '14:42:00', 5),
+(6, 2, 9, 12, '2023-04-02', '00:00:00', 2),
+(7, 2, 9, 12, '2023-04-20', '14:42:00', 6),
 (9, 2, 9, 12, '2023-03-08', '15:49:00', 5),
 (11, 2, 9, 12, '2023-04-05', '13:50:00', 5),
 (15, 6, 9, 11, '2023-04-04', '18:50:00', 1),
@@ -193,7 +197,8 @@ ALTER TABLE `cabinets`
 -- Индексы таблицы `diagnoses`
 --
 ALTER TABLE `diagnoses`
-  ADD PRIMARY KEY (`diagnosis_id`);
+  ADD PRIMARY KEY (`diagnosis_id`),
+  ADD UNIQUE KEY `title` (`title`) USING BTREE;
 
 --
 -- Индексы таблицы `job_title`
@@ -239,7 +244,7 @@ ALTER TABLE `cabinets`
 -- AUTO_INCREMENT для таблицы `diagnoses`
 --
 ALTER TABLE `diagnoses`
-  MODIFY `diagnosis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `diagnosis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT для таблицы `job_title`

@@ -1,6 +1,7 @@
 <div class="h1">
-    <h1>ЗАПИСИ</h1><button><a href="<?= app()->route->getUrl('/newreception') ?>">ДОБАВИТЬ</a></button>
+    <h1>ЗАПИСИ</h1><?php if ((new Model\User)->is_reg()){ ?><button><a href="<?= app()->route->getUrl('/newreception') ?>">ДОБАВИТЬ</a></button><?php } ?>
 </div>
+<h3><?= $message ?? ''; ?></h3>
 <div class="table">
     <table>
         <thead>
@@ -10,6 +11,7 @@
             <th>Кабинет</th>
             <th>Дата</th>
             <th>Время</th>
+            <th>Подробнее</th>
         </tr>
         </thead>
         <tbody>
@@ -20,7 +22,8 @@
                 .'</td>'.'<td>' . $reception->cabinet_id
                 .'</td>'.'<td>' . $reception->date
                 .'</td>'.'<td>' . $reception->time
-                .'</td></tr>';
+                . '<td><a href="' . app()->route->getUrl('/reception?reception_id='. $reception->reception_id) . '">Подробнее</a></td>'
+                .'</tr>';
         }
         ?>
         </tbody>

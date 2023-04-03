@@ -1,6 +1,11 @@
 <div class="h1">
-    <h1>ДИАГНОЗЫ</h1><div class="new"><button><a href="<?= app()->route->getUrl('/newdiag') ?>">ДОБАВИТЬ</a></button> <input type="text" name="title"></div>
+    <h1>ДИАГНОЗЫ</h1>
+    <form method="post">
+        <input type="text" name="title">
+        <button>ДОБАВИТЬ</button>
+    </form>
 </div>
+<h3><?= $message ?? ''; ?></h3>
 <div class="table">
     <table>
         <thead>

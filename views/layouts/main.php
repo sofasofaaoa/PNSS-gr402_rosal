@@ -13,19 +13,19 @@
     <nav>
         <?php
         if (app()->auth::check()):
-            if (app()->auth::user()->job_title_id <= 3){
-                ?>
-                <a href='<?= app()->route->getUrl('/receptions') ?>'>Записи</a>
-                <a href='<?= app()->route->getUrl('/patients') ?>'>Пациенты</a>
-                <?php } //https://laravel.com/docs/10.x/eloquent-relationships
-                if (app()->auth::user()->job_title_id <= 2) {?>
-                    <a href='<?= app()->route->getUrl('/diagnosis') ?>'>Диагнозы</a>
-                    <?php if (app()->auth::user()->job_title_id === 1){ ?>
-                            <a href='<?= app()->route->getUrl('/cabinets') ?>'>Кабинеты</a>
-                            <a href='<?= app()->route->getUrl('/employees') ?>'>Сотрудники</a>
-                    <?php }
+        if (app()->auth::user()->job_title_id <= 3){
+            ?>
+            <a href='<?= app()->route->getUrl('/receptions') ?>'>Записи</a>
+            <a href='<?= app()->route->getUrl('/patients') ?>'>Пациенты</a>
+        <?php } //https://laravel.com/docs/10.x/eloquent-relationships
+        if (app()->auth::user()->job_title_id <= 2) {?>
+            <a href='<?= app()->route->getUrl('/diagnosis') ?>'>Диагнозы</a>
+            <?php if (app()->auth::user()->job_title_id === 1){ ?>
+                <a href='<?= app()->route->getUrl('/cabinets') ?>'>Кабинеты</a>
+                <a href='<?= app()->route->getUrl('/employees') ?>'>Сотрудники</a>
+            <?php }
 
-            } ?>
+        } ?>
     </nav>
     <div class="logout">
         <p><?= app()->auth::user()->name ?></p>

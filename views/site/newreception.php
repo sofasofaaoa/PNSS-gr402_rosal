@@ -43,7 +43,7 @@
         </div>
         <label>Диагноз<br>
             <select name="diagnosis_id">
-                <option>Выберите диагноз</option>
+                <option value="">Выберите диагноз</option>
                 <?php foreach ($diagnosis as $diag){
                     echo '<option value="' .$diag->diagnosis_id. '">' . $diag->title;
                 }
