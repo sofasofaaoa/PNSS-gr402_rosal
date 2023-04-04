@@ -1,6 +1,7 @@
 <div class="h1">
     <h1>ДИАГНОЗЫ</h1>
     <form method="post">
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
         <input type="text" name="title">
         <button>ДОБАВИТЬ</button>
     </form>

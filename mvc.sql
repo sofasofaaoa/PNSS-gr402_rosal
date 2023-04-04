@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1
--- Время создания: Апр 03 2023 г., 18:20
+-- Время создания: Апр 04 2023 г., 15:59
 -- Версия сервера: 10.4.27-MariaDB
 -- Версия PHP: 8.2.0
 
@@ -61,6 +61,12 @@ CREATE TABLE `diagnoses` (
 --
 
 INSERT INTO `diagnoses` (`diagnosis_id`, `title`) VALUES
+(18, '&lt;a&gt;ASFADFD&lt;/a&gt;'),
+(15, 'asdf'),
+(17, 'asdfsadfa'),
+(14, 'zxc'),
+(19, 'zxcxvcvcbc'),
+(16, 'zxvxbdtb'),
 (1, 'Ангина'),
 (10, 'Диарея'),
 (3, 'Невроз'),
@@ -150,8 +156,7 @@ INSERT INTO `receptions` (`reception_id`, `patient_id`, `id`, `cabinet_id`, `dat
 (17, 1, 5, 8, '2023-04-05', '18:56:00', 2),
 (18, 1, 5, 8, '2023-03-30', '19:00:00', 1),
 (19, 1, 5, 8, '2023-03-30', '19:00:00', 1),
-(20, 1, 5, 8, '2023-03-30', '19:00:00', 1),
-(21, 6, 24, 13, '2023-05-01', '18:00:00', 3);
+(20, 1, 5, 8, '2023-03-30', '19:00:00', 1);
 
 -- --------------------------------------------------------
 
@@ -180,8 +185,7 @@ INSERT INTO `users` (`id`, `login`, `password`, `surname`, `name`, `patronymic`,
 (5, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Робертус', 'Софья', 'Александровна', 'Ж', '2004-10-07', 1, 'Администратор'),
 (8, 'hud', '8eaab8f57cf980e83393fe2b03efe0c2', 'Худобин', 'Дмитрий', 'Александрович', 'М', '1989-11-09', 3, ''),
 (9, 'ivanov', '4dfe6e220d16e7b633cfdd92bcc8050b', 'Иванов', 'Иван', 'Иванович', 'М', '1965-11-05', 2, 'Акушер-гинеколог'),
-(17, '', 'd41d8cd98f00b204e9800998ecf8427e', 'Робертус', 'Софья', 'Александровна', 'Ж', '2023-04-05', NULL, NULL),
-(24, 'zxc', '5fa72358f0b4fb4f2c5d7de8c9a41846', 'zxc', 'zxc', 'zxc', 'М', '2012-03-12', 2, 'QWE');
+(30, 'asd', '7815696ecbf1c96e6894b779456d330e', 'asd', 'asd', 'asd', 'Ж', '1970-01-01', 2, 'asd');
 
 --
 -- Индексы сохранённых таблиц
@@ -244,7 +248,7 @@ ALTER TABLE `cabinets`
 -- AUTO_INCREMENT для таблицы `diagnoses`
 --
 ALTER TABLE `diagnoses`
-  MODIFY `diagnosis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `diagnosis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT для таблицы `job_title`
@@ -268,7 +272,7 @@ ALTER TABLE `receptions`
 -- AUTO_INCREMENT для таблицы `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

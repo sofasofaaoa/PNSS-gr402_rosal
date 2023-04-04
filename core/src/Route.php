@@ -88,14 +88,14 @@ class Route
         $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
         switch ($routeInfo[0]) {
             case Dispatcher::NOT_FOUND:
-                $this->redirect('/hello');
                 throw new Error('NOT_FOUND');
             case Dispatcher::METHOD_NOT_ALLOWED:
                 throw new Error('METHOD_NOT_ALLOWED');
             case Dispatcher::FOUND:
                 $handler = $routeInfo[1];
                 $vars = array_values($routeInfo[2]);
-                $vars[] = Middleware::single()->runMiddlewares($httpMethod, $uri);
+//Вызываем обработку всех Middleware
+                $vars[] = Middleware::single()->go($httpMethod, $uri, new Request());
                 $class = $handler[0];
                 $action = $handler[1];
                 call_user_func([new $class, $action], ...$vars);
