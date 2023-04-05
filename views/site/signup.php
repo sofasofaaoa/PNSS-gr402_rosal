@@ -2,9 +2,10 @@
     <h1>ДОБАВЛЕНИЕ СОТРУДНИКА</h1>
 </div>
 <h3><?= $message ?? ''; ?></h3>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
+    <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
     <div class="form_col">
-        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+        <label>Фото <input type="file" name="filename"></label><br>
         <label>Логин <br><input type="text" name="login"></label>
         <label>Пароль <br><input type="password" name="password"></label>
         <label>Фамилия <br><input type="text" name="surname"></label>

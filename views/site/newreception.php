@@ -19,6 +19,7 @@
             <select name="id">
                 <option>Выберите врача</option>
                 <?php foreach ($users as $user){
+                    if ($user->job_title_id === 2)
                     echo '<option value="' .$user->id. '">' . $user->surname . ' '
                         . mb_substr($user->name, 0, 1, 'UTF-8') . '. '
                         . mb_substr($user->patronymic, 0, 1, 'UTF-8') . '.';

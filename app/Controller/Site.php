@@ -30,18 +30,21 @@ class Site
                 'sex' => ['required'],
                 'date_of_birth' => ['required'],
                 'job_title_id' => ['required'],
+                'filename' => ['img']
             ], [
                 'required' => 'Поле :field пусто',
-                'unique' => 'Поле :field должно быть уникально'
+                'unique' => 'Поле :field должно быть уникально',
+                'img' => 'Расширение файла должно быть .JPG'
             ]);
 
             if($validator->fails()){
                 return new View('site.signup',
                     ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
-            }
-
-            if (User::create($request->all())) {
-                return new View('site.signup', ['message' => 'Сотрудник успешно зарегистрирован']);
+            }else{
+                $user = User::create($request->all());
+                $user->photo($_FILES['filename']);
+                $user->save();
+                return new View('site.signup', ['message' => 'Сотрудник успешно добавлен, фото тоже']);
             }
         }
         return new View('site.signup');

@@ -20,7 +20,8 @@ class User extends Model implements IdentityInterface
         'sex',
         'date_of_birth',
         'job_title_id',
-        'specialization'
+        'specialization',
+        'filename'
     ];
 
     protected static function booted()
@@ -63,5 +64,11 @@ class User extends Model implements IdentityInterface
     {
         if(app()->auth::user()->job_title_id === 3){return true;}
         else {return false;}
+    }
+    public function photo($img)
+    {
+        $imgname = md5(time()). '.'. explode('/', $img['type'])[1];
+        $this->filename = $imgname;
+        move_uploaded_file($img['tmp_name'], __DIR__ . '/../../public/img/' . $imgname);
     }
 }
