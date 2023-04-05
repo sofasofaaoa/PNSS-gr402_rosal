@@ -1,5 +1,5 @@
 <div class="h1">
-    <?php if (app()->auth::user()->job_title_id === 2){?>
+    <?php if ($user->job_title_id == 2){?>
         <h1>ВРАЧ</h1>
     <?php }else {?>
         <h1>СОТРУДНИК</h1>
@@ -12,11 +12,11 @@
                 <img src="public/img/<?= $user->filename?>" alt="photo" width="180px">
             <?php }?>
             <p><?= $user->surname ?> <?= $user->name ?> <?= $user->patronymic ?></p>
-            <p><?= $user->date_of_birth ?>г.р.</p></label>
+            <p><?= $user->date_of_birth ?>г.р.</p>
         </div>
 
     </form>
-    <?php if (app()->auth::user()->job_title_id === 2){?>
+    <?php if ($user->job_title_id == 2){?>
         <div class="table">
             <table>
                 <thead>

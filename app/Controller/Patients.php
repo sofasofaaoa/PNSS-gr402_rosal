@@ -14,9 +14,13 @@ use Src\Auth\Auth;
 class Patients
 {
 
-    public static function patients(): string
+    public static function patients(Request $request): string
     {
         $patients = \Model\Patient::all();
+        if ($request->method === 'POST') {
+            $patients = Patient::where('surname', $request->find)->get();
+            return (new View())->render('site.patients', ['patients' => $patients]);
+        }
         return (new View())->render('site.patients', ['patients' => $patients]);
     }
 

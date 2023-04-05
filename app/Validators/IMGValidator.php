@@ -2,8 +2,6 @@
 
 namespace Validators;
 
-use Illuminate\Database\Capsule\Manager as Capsule;
-use SplFileInfo;
 use Src\Validator\AbstractValidator;
 
 class IMGValidator extends AbstractValidator

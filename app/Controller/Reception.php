@@ -14,7 +14,7 @@ use Src\Auth\Auth;
 class Reception
 {
 
-    public static function receptions(): string
+    public static function receptions(Request $request): string
     {
         $receptions = \Model\Reception::all();
         return (new View())->render('site.receptions', ['receptions' => $receptions]);

@@ -1,5 +1,11 @@
+
 <div class="h1">
-    <h1>ЗАПИСИ</h1><?php if ((new Model\User)->is_reg()){ ?><button><a href="<?= app()->route->getUrl('/newreception') ?>">ДОБАВИТЬ</a></button><?php } ?>
+    <h1>ЗАПИСИ</h1>
+    <?php if ((new Model\User)->is_reg()){ ?>
+        <button>
+        <a href="<?= app()->route->getUrl('/newreception') ?>">ДОБАВИТЬ</a>
+        </button>
+    <?php } ?>
 </div>
 <h3><?= $message ?? ''; ?></h3>
 <div class="table">

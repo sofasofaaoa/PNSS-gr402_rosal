@@ -12,9 +12,13 @@ use Src\Auth\Auth;
 
 class Employees
 {
-    public static function employees(): string
+    public static function employees(Request $request): string
     {
         $employees = User::all();
+        if ($request->method === 'POST') {
+            $employees = User::where('surname', $request->find)->get();
+            return (new View())->render('site.employees', ['employees' => $employees]);
+        }
         return (new View())->render('site.employees', ['employees' => $employees]);
     }
 
@@ -33,7 +37,8 @@ class Employees
 //            'users' => $users,
 //            'cabinets' => $cabinets,
             'receptions' => $receptions,
-            'user' => $user
+            'user' => $user,
+            'request' => $request
         ]);
     }
 }

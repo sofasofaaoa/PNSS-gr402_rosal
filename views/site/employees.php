@@ -1,5 +1,10 @@
 <div class="h1">
     <h1>СОТРУДНИКИ</h1><button><a href="<?= app()->route->getUrl('/signup') ?>">ДОБАВИТЬ</a></button>
+    <form method="post">
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
+        <input type="text" name="find" placeholder="Введите фамилию сотрудника">
+        <button>НАЙТИ</button>
+    </form>
 </div>
 <div class="table">
     <table>

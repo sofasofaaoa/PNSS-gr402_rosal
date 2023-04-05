@@ -1,3 +1,4 @@
+
 <div class="h1">
     <h1>ДИАГНОЗЫ</h1>
     <form method="post">
@@ -6,6 +7,7 @@
         <button>ДОБАВИТЬ</button>
     </form>
 </div>
+
 <h3><?= $message ?? ''; ?></h3>
 <div class="table">
     <table>

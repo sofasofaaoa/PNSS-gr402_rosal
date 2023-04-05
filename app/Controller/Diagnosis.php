@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Model\Patient;
 use Model\User;
 use Src\View;
 use Src\Request;

@@ -4,6 +4,7 @@
 <h3><?= $message ?? ''; ?></h3>
 <form method="post">
     <div class="form_col">
+        <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
         <label>Пациент<br>
             <select name="patient_id">
                 <option>Выберите пациента</option>
@@ -44,7 +45,6 @@
         </div>
         <label>Диагноз<br>
             <select name="diagnosis_id">
-                <option value="">Выберите диагноз</option>
                 <?php foreach ($diagnosis as $diag){
                     echo '<option value="' .$diag->diagnosis_id. '">' . $diag->title;
                 }
