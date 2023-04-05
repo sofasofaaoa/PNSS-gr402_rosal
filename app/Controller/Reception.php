@@ -2,6 +2,7 @@
 
 namespace Controller;
 
+use Src\Validator\Validator;
 use Src\View;
 use Src\Request;
 use Model\Patient;
@@ -26,8 +27,35 @@ class Reception
         $patients = Patient::all();
         $cabinets = Cabinet::all();
         $diagnosis = Diagnosis::all();
-        if ($request->method === 'POST' && \Model\Reception::create($request->all())) {
-            return new View('site.newreception', ['message' => 'Запись на приём добавлена']);
+        if ($request->method === 'POST') {
+            $validator = new Validator($request->all(), [
+                'patient_id' => ['required', 'russian'],
+                'id' => ['required', 'russian'],
+                'cabinet' => ['required', 'russian'],
+                'date' => ['required'],
+                'time' => ['required'],
+                'diagnosis_id' => ['russian']
+            ], [
+                'required' => 'Поле :field пусто',
+                'russian' => 'Только русский алфавит в поле :field'
+            ]);
+
+            if($validator->fails()){
+                return new View('site.newreception',
+                    ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE),
+                        'users' => $users,
+                        'patients' => $patients,
+                        'cabinets' => $cabinets,
+                        'diagnosis' => $diagnosis]);
+            }else{
+                $rec = \Model\Reception::create($request->all());
+                $rec->save();
+                return new View('site.newreception', ['message' => 'Сотрудник успешно добавлен, фото тоже',
+                    'users' => $users,
+                    'patients' => $patients,
+                    'cabinets' => $cabinets,
+                    'diagnosis' => $diagnosis]);
+            }
         }
         return new View('site.newreception',
             ['users' => $users,

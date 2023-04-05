@@ -18,7 +18,9 @@ return [
     'validators' => [
         'required' => \Validators\RequireValidator::class,
         'unique' => \Validators\UniqueValidator::class,
-        'img' => \Validators\IMGValidator::class
+        'img' => \Validators\IMGValidator::class,
+        'russian' => \Validators\RussianValidator::class,
+        'login' =>\Validators\LoginValidator::class
     ]
 
 ];
