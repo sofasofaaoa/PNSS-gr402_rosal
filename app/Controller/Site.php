@@ -28,10 +28,11 @@ class Site
                 'name' => ['required', 'russian'],
                 'surname' => ['required', 'russian'],
                 'sex' => ['required'],
-                'date_of_birth' => ['required'],
+                'date_of_birth' => ['required', 'dateofbirth'],
                 'job_title_id' => ['required'],
                 'filename' => ['img']
             ], [
+                'dateofbirth' => 'Дата должна быть меньше или равна сегодняшней',
                 'required' => 'Поле :field пусто',
                 'length' => 'Не менее 6 символов в поле :field',
                 'unique' => 'Поле :field должно быть уникально',

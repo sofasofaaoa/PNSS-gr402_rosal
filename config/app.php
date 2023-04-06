@@ -21,7 +21,9 @@ return [
         'img' => \Validators\IMGValidator::class,
         'russian' => \Validators\RussianValidator::class,
         'login' =>\Validators\LoginValidator::class,
-        'length' => \Validators\LengthValidator::class
+        'length' => \Validators\LengthValidator::class,
+        'dateofrec' => \Validators\DateofrecValidator::class,
+        'dateofbirth' => \Validators\DateofbirthValidator::class
     ]
 
 ];

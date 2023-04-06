@@ -23,8 +23,8 @@
         <tbody>
         <?php
         foreach ($receptions as $reception) {
-            echo '<tr>' . '<td>' .$reception->patient_id
-                .'</td>'.'<td>' . $reception->id
+            echo '<tr>' . '<td>' .$reception->getpatients->surname
+                .'</td>'.'<td>' . $reception->getdoctors->surname
                 .'</td>'.'<td>' . $reception->cabinet_id
                 .'</td>'.'<td>' . $reception->date
                 .'</td>'.'<td>' . $reception->time

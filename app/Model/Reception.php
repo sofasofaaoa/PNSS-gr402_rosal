@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Src\Auth\IdentityInterface;
 
-class Reception extends Model implements IdentityInterface
+class Reception extends Model
 {
     use HasFactory;
 
@@ -19,22 +19,17 @@ class Reception extends Model implements IdentityInterface
         'time',
         'diagnosis_id'
     ];
-    //Выборка пользователя по первичному ключу
-    public function findIdentity(int $id)
-    {
-        return self::where('id', $id)->first();
+    public function getpatients(){
+        return $this->belongsTo(Patient::class, 'patient_id', 'patient_id');
     }
 
-    //Возврат первичного ключа
-    public function getId(): int
-    {
-        return $this->id;
+    public function getdoctors(){
+        return $this->belongsTo(User::class, 'id', 'id');
     }
-
-    //Возврат аутентифицированного пользователя
-    public function attemptIdentity(array $credentials)
-    {
-        return self::where(['login' => $credentials['login'],
-            'password' => md5($credentials['password'])])->first();
+    public function getcabinets(){
+        return $this->belongsTo(Cabinet::class, 'cabinet_id', 'cabinet_id');
+    }
+    public function getdiagnoses(){
+        return $this->belongsTo(Diagnosis::class, 'diagnosis_id', 'diagnosis_id');
     }
 }

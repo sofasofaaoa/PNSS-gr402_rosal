@@ -71,4 +71,7 @@ class User extends Model implements IdentityInterface
         $this->filename = $imgname;
         move_uploaded_file($img['tmp_name'], __DIR__ . '/../../public/img/' . $imgname);
     }
+    public function getreceptions(){
+        return $this->hasMany(Reception::class, 'id');
+    }
 }

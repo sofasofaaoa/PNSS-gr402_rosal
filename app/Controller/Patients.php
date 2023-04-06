@@ -27,13 +27,14 @@ class Patients
 
     public function newpatient(Request $request): string
     {
-        if ($request->method === 'POST' && Patient::create($request->all())) {
+        if ($request->method === 'POST') {
             $validator = new Validator($request->all(), [
                 'name' => ['required', 'russian'],
                 'surname' => ['required', 'russian'],
                 'patronymic' => ['russian'],
-                'date_of_birth' => ['required'],
+                'date_of_birth' => ['required', 'dateofbirth'],
             ], [
+                'dateofbirth' => 'Дата должна быть меньше или равна сегодняшней',
                 'required' => 'Поле :field пусто',
                 'russian' => 'Только русский алфавит в поле :field',
             ]);
@@ -52,24 +53,9 @@ class Patients
 
     public static function patient(Request $request): string
     {
-        $receptions = Reception::where('patient_id', $request->patient_id)->get();
-//        $users = User::where('id', $receptions->id)->get();
-//        $cabinets = Cabinet::where('cabinet_id', $request->cabinet_id)->get();
-        $diagnoses = [];
-        foreach ($receptions as $key => $reception){
-            $diagnoses[$key] = \Model\Diagnosis::where('diagnosis_id', $reception->diagnosis_id)->get();
-        }
-        $doc = [];
-        foreach ($receptions as $reception){
-            $doc[] = \Model\User::where('id', $reception->id)->first();
-        }
-        $patients = Patient::where('patient_id', $request->patient_id)->get();
+        $patient = Patient::where('patient_id', $request->patient_id)->first();
         return (new View())->render('site.patient', [
-            'patients' => $patients,
-            'doc' => $doc,
-//            'cabinets' => $cabinets,
-            'receptions' => $receptions,
-            'diagnoses' => $diagnoses
+            'patient' => $patient,
         ]);
     }
 }

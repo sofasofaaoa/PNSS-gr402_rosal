@@ -16,7 +16,7 @@
         </div>
 
     </form>
-    <?php if ($user->job_title_id == 2){?>
+    <?php if ($user->job_title_id == 2 && !empty($user->getreceptions)){?>
         <div class="table">
             <table>
                 <thead>
@@ -29,9 +29,9 @@
                 </thead>
                 <tbody>
                 <?php
-                foreach ($receptions as $key => $reception) {
+                foreach ($user->getreceptions as $key => $reception) {
                     echo '<tr>'
-                        .'</td>'.'<td>' . $patients[$key]->surname
+                        .'</td>'.'<td>' . $reception->getpatients->surname
                         .'</td>'.'<td>' . $reception->cabinet_id
                         .'</td>'.'<td>' . $reception->date
                         .'</td>'.'<td>' . $reception->time

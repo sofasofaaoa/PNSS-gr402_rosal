@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Src\Auth\IdentityInterface;
 
-class Cabinet extends Model implements IdentityInterface
+class Cabinet extends Model
 {
     use HasFactory;
 
@@ -14,19 +14,7 @@ class Cabinet extends Model implements IdentityInterface
     protected $fillable = [
         'title'
     ];
-
-    public function findIdentity(int $id)
-    {
-        // TODO: Implement findIdentity() method.
-    }
-
-    public function getId(): int
-    {
-        // TODO: Implement getId() method.
-    }
-
-    public function attemptIdentity(array $credentials)
-    {
-        // TODO: Implement attemptIdentity() method.
+    public function getreceptions(){
+        return $this->hasMany(Reception::class, 'id');
     }
 }
