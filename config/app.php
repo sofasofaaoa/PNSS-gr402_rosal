@@ -20,7 +20,8 @@ return [
         'unique' => \Validators\UniqueValidator::class,
         'img' => \Validators\IMGValidator::class,
         'russian' => \Validators\RussianValidator::class,
-        'login' =>\Validators\LoginValidator::class
+        'login' =>\Validators\LoginValidator::class,
+        'length' => \Validators\LengthValidator::class
     ]
 
 ];

@@ -11,6 +11,6 @@ class RussianValidator extends AbstractValidator
 
     public function rule(): bool
     {
-        return preg_match("/^[а-я -]{2,50}$/iu" , $this->value);
+        return preg_match("/^[а-я -]{1,50}$/iu" , $this->value);
     }
 }

@@ -35,9 +35,4 @@ class Diagnosis
         return (new View())->render('site.diagnosis', ['diagnosis' => $diagnosis]);
 
     }
-    public function new(Request $request): string
-    {
-
-        return new View('site.diagnosis');
-    }
 }

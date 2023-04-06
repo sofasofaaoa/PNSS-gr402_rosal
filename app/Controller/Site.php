@@ -23,8 +23,8 @@ class Site
         if ($request->method === 'POST') {
 
             $validator = new Validator($request->all(), [
-                'login' => ['required', 'unique:users,login', 'login'],
-                'password' => ['required', 'login'],
+                'login' => ['required', 'unique:users,login', 'login', 'length'],
+                'password' => ['required', 'login', 'length'],
                 'name' => ['required', 'russian'],
                 'surname' => ['required', 'russian'],
                 'sex' => ['required'],
@@ -33,6 +33,7 @@ class Site
                 'filename' => ['img']
             ], [
                 'required' => 'Поле :field пусто',
+                'length' => 'Не менее 6 символов в поле :field',
                 'unique' => 'Поле :field должно быть уникально',
                 'img' => 'Расширение файла должно быть .JPG',
                 'russian' => 'Только русский алфавит в поле :field',
