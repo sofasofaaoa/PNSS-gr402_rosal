@@ -15,7 +15,8 @@
         "illuminate/events": "10.x-dev",
         "nikic/fast-route": "^2.0@dev",
         "ext-json": "*",
-        "sofasofaaoa/collect": "dev-master"
+        "sofasofaaoa/collect": "dev-master",
+        "sofasofaaoa/uploadimg": "dev-master"
     },
     "autoload": {
         "psr-4": {
