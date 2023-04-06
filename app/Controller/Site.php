@@ -23,10 +23,10 @@ class Site
         if ($request->method === 'POST') {
 
             $validator = new Validator($request->all(), [
-                'login' => ['required', 'unique:users,login'],
-                'password' => ['required'],
-                'name' => ['required'],
-                'surname' => ['required'],
+                'login' => ['required', 'unique:users,login', 'login'],
+                'password' => ['required', 'login'],
+                'name' => ['required', 'russian'],
+                'surname' => ['required', 'russian'],
                 'sex' => ['required'],
                 'date_of_birth' => ['required'],
                 'job_title_id' => ['required'],
@@ -34,7 +34,9 @@ class Site
             ], [
                 'required' => 'Поле :field пусто',
                 'unique' => 'Поле :field должно быть уникально',
-                'img' => 'Расширение файла должно быть .JPG'
+                'img' => 'Расширение файла должно быть .JPG',
+                'russian' => 'Только русский алфавит в поле :field',
+                'login' => 'Только латиница, цифры и -_ в поле :field'
             ]);
 
             if($validator->fails()){

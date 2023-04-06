@@ -29,15 +29,12 @@ class Reception
         $diagnosis = Diagnosis::all();
         if ($request->method === 'POST') {
             $validator = new Validator($request->all(), [
-                'patient_id' => ['required', 'russian'],
-                'id' => ['required', 'russian'],
-                'cabinet' => ['required', 'russian'],
+                'patient_id' => ['required'],
+                'id' => ['required'],
                 'date' => ['required'],
                 'time' => ['required'],
-                'diagnosis_id' => ['russian']
             ], [
                 'required' => 'Поле :field пусто',
-                'russian' => 'Только русский алфавит в поле :field'
             ]);
 
             if($validator->fails()){
@@ -50,7 +47,7 @@ class Reception
             }else{
                 $rec = \Model\Reception::create($request->all());
                 $rec->save();
-                return new View('site.newreception', ['message' => 'Сотрудник успешно добавлен, фото тоже',
+                return new View('site.newreception', ['message' => 'Запись добавлена',
                     'users' => $users,
                     'patients' => $patients,
                     'cabinets' => $cabinets,

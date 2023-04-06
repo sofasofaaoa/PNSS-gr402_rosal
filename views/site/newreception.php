@@ -7,7 +7,7 @@
         <input name="csrf_token" type="hidden" value="<?= app()->auth::generateCSRF() ?>"/>
         <label>Пациент<br>
             <select name="patient_id">
-                <option>Выберите пациента</option>
+                <option value="">Выберите пациента</option>
                 <?php foreach ($patients as $patient){
                     echo '<option value="' .$patient->patient_id. '">' . $patient->surname . ' '
                         . mb_substr($patient->name, 0, 1, 'UTF-8') . '. '
@@ -18,7 +18,7 @@
         </label>
         <label>Врач<br>
             <select name="id">
-                <option>Выберите врача</option>
+                <option value="">Выберите врача</option>
                 <?php foreach ($users as $user){
                     if ($user->job_title_id === 2)
                     echo '<option value="' .$user->id. '">' . $user->surname . ' '
@@ -30,7 +30,6 @@
         </label>
         <label>Кабинет<br>
             <select name="cabinet_id">
-                <option>Выберите кабинет</option>
                 <?php foreach ($cabinets as $cabinet){
                     echo '<option value="' .$cabinet->cabinet_id. '">' . $cabinet->title;
                 }
