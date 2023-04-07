@@ -24,6 +24,13 @@ return [
         'length' => \Validators\LengthValidator::class,
         'dateofrec' => \Validators\DateofrecValidator::class,
         'dateofbirth' => \Validators\DateofbirthValidator::class
-    ]
+    ],
+    'providers' => [
+        'kernel' => \Src\Provider\KernelProvider::class,
+        'route' => \Src\Provider\RouteProvider::class,
+        'db' => \Src\Provider\DBProvider::class,
+        'auth' => \Src\Provider\AuthProvider::class,
+    ],
+
 
 ];
