@@ -11,6 +11,6 @@ class LoginValidator extends AbstractValidator
 
     public function rule(): bool
     {
-        return preg_match("/^[a-z0-9]*$/i", $this->value);
+        return preg_match("/^[a-z0-9_-]$/i", $this->value);
     }
 }

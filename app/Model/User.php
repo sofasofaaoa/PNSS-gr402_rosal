@@ -5,12 +5,10 @@ namespace Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Src\Auth\IdentityInterface;
-use UploadIMG\UploadIMG;
 
 class User extends Model implements IdentityInterface
 {
     use HasFactory;
-    use UploadIMG;
 
     public $timestamps = false;
     protected $fillable = [
@@ -67,7 +65,12 @@ class User extends Model implements IdentityInterface
         if(app()->auth::user()->job_title_id === 3){return true;}
         else {return false;}
     }
-
+    public function photo($img)
+    {
+        $imgname = md5(time()). '.'. explode('/', $img['type'])[1];
+        $this->filename = $imgname;
+        move_uploaded_file($img['tmp_name'], __DIR__ . '/../../public/img/' . $imgname);
+    }
     public function getreceptions(){
         return $this->hasMany(Reception::class, 'id');
     }

@@ -46,7 +46,7 @@ class Site
                     ['message' => json_encode($validator->errors(), JSON_UNESCAPED_UNICODE)]);
             }else{
                 $user = User::create($request->all());
-                $user->photo($_FILES['filename'], __DIR__ . '/../../public/img/');
+                $user->photo($_FILES['filename']);
                 $user->save();
                 return new View('site.signup', ['message' => 'Сотрудник успешно добавлен, фото тоже']);
             }
